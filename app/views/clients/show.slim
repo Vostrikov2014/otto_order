@@ -1,0 +1,20 @@
+.m-4
+  h4.mb-4.mt-4.text-left
+    | Client
+
+  p
+    strong
+      | Number:&nbsp
+      = @client.number
+  p
+    strong
+      | Name:&nbsp
+      = @client.name
+  p
+    strong
+      | Postcode:&nbsp
+      = @client.postcode
+
+  = link_to 'Edit', edit_client_path(@client)
+  |  |
+  = link_to ' Back', clients_path

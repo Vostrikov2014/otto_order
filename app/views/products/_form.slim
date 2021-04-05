@@ -1,0 +1,11 @@
+= form_with model: @product do |f|
+  = render 'shared/errors', resource: @product
+
+  p
+    = f.label :title
+    = f.text_field :title
+  p
+    = f.label :body
+    = f.text_field :body
+
+  p= f.submit

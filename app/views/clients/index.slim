@@ -1,0 +1,18 @@
+.m-4
+  h3.mb-4.mt-4.text-center
+    | Client
+
+  p= link_to 'New client', new_client_path
+
+  table.table.table-striped.table-bordered.table-hover.text-center
+    tr
+      th Number
+      th Name
+      th Postcode
+      th[colspan='3']
+        | Actions
+
+    = render @clients
+
+  p= link_to 'Orders', orders_path
+  p= link_to 'Products', products_path

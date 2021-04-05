@@ -1,0 +1,16 @@
+.m-4
+  h4.mb-4.mt-4.text-left
+    | Product
+
+  p
+    strong
+      | Title:&nbsp
+      = @product.title
+  p
+    strong
+      | Body:&nbsp
+      = @product.body
+
+  = link_to 'Edit', edit_product_path(@product)
+  |  |
+  = link_to ' Back', products_path

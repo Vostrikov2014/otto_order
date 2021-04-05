@@ -34,6 +34,8 @@ RSpec.configure do |config|
   # Start FactoryBot
   config.include FactoryBot::Syntax::Methods
 
+  Capybara.javascript_driver = :selenium_chrome_headless
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
