@@ -1,0 +1,17 @@
+.m-4
+  h3.mb-4.mt-4.text-center
+    | Orders
+
+  p= link_to 'New order', new_order_path
+
+  table.table.table-striped.table-bordered.table-hover.text-center
+    tr
+      th Number
+      th Quantity
+      th[colspan='3']
+        | Actions
+
+    = render @orders
+
+  p= link_to 'Products', products_path
+  p= link_to 'Clients', clients_path

@@ -1,0 +1,23 @@
+= form_with model: @order do |f|
+  = render 'shared/errors', resource: @order
+
+  p
+    = f.label :number
+    = f.text_field :number
+
+  = f.fields_for :client do |c|
+    p
+      = c.label :number, 'Client number'
+      = c.text_field :number
+    p
+      = c.label :name
+      = c.text_field :name
+    p
+      = c.label :postcode
+      = c.text_field :postcode
+
+  p
+    = f.label :quantity
+    = f.text_field :quantity
+
+  p= f.submit

@@ -1,0 +1,28 @@
+.m-4
+  h4.mb-4.mt-4.text-left
+    | Order
+
+  p
+    strong
+      | Number:&nbsp
+      = @order.number
+  p
+    strong
+      | Client number:&nbsp
+      = @order.client.number
+  p
+    strong
+      | Client name:&nbsp
+      = @order.client.name
+  p
+    strong
+      | Client postcode:&nbsp
+      = @order.client.postcode
+  p
+    strong
+      | Quantity:&nbsp
+      = @order.quantity
+
+  = link_to 'Edit', edit_order_path(@order)
+  |  |
+  = link_to ' Back', orders_path
