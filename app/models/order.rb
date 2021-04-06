@@ -4,6 +4,5 @@ class Order < ApplicationRecord
 
   accepts_nested_attributes_for :client, reject_if: :all_blank
 
-  #validates :client_id, presence: true
-
+  validates :number, presence: true, uniqueness: true
 end
