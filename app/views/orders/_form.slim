@@ -2,8 +2,8 @@
   = render 'shared/errors', resource: @order
 
   p
-    = f.label :number
-    = f.text_field :number
+    = f.label :count
+    = f.text_field :count
 
   = f.fields_for :client do |c|
     p
@@ -16,8 +16,13 @@
       = c.label :postcode
       = c.text_field :postcode
 
-  p
-    = f.label :quantity
-    = f.text_field :quantity
-
+  = f.fields_for :order_product do |op|
+    p
+      = op.label :product_id, 'Product'
+      = op.text_field :product_id
+    p
+      = op.label :quantity
+      = op.text_field :quantity
+    //.links
+    //  = link_to_add_association 'add product', f, :order_product
   p= f.submit

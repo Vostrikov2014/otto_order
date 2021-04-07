@@ -1,6 +1,5 @@
 tr
-  td= order.number
-  td= order.quantity
+  td= order.count
   td= link_to 'Show', order_path(order)
   td= link_to 'Edit', edit_order_path(order)
   td= link_to 'Delete', order_path(order), method: :delete, data: { confirm: 'Are you sure?' }

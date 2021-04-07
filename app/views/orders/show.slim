@@ -4,8 +4,8 @@
 
   p
     strong
-      | Number:&nbsp
-      = @order.number
+      | Count:&nbsp
+      = @order.count
   p
     strong
       | Client number:&nbsp
@@ -20,8 +20,12 @@
       = @order.client.postcode
   p
     strong
+      | ID product:&nbsp
+      = @order.products.select('products.*, orders_products.product_id').first
+  p
+    strong
       | Quantity:&nbsp
-      = @order.quantity
+      = @order.products.select('products.*, orders_products.quantity').first
 
   = link_to 'Edit', edit_order_path(@order)
   |  |

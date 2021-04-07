@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_05_183408) do
+ActiveRecord::Schema.define(version: 2021_04_06_183533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,26 +21,21 @@ ActiveRecord::Schema.define(version: 2021_04_05_183408) do
     t.integer "postcode"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "order_id"
-    t.index ["order_id"], name: "index_clients_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "quantity"
-    t.bigint "client_id"
+    t.integer "count"
+    t.bigint "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "number"
     t.index ["client_id"], name: "index_orders_on_client_id"
   end
 
-  create_table "orders_products", force: :cascade do |t|
-    t.bigint "order_id"
-    t.bigint "product_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_orders_products_on_order_id"
-    t.index ["product_id"], name: "index_orders_products_on_product_id"
+  create_table "orders_products", id: false, force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "quantity", default: 0
+    t.index ["order_id", "product_id"], name: "index_orders_products_on_order_id_and_product_id", unique: true
   end
 
   create_table "products", force: :cascade do |t|

@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @client = @order.build_client
   end
 
   def new
@@ -18,13 +19,12 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    #if Client.find_by(number: @order.number).nil?
-      if @order.save
-        redirect_to @order
-      else
-        render :new
-      end
-    #end
+    #Client.find_by_created_at(number: @order.number).nil?
+    if @order.save
+      redirect_to @order
+    else
+      render :new
+    end
   end
 
   def update
@@ -47,11 +47,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:number, :quantity, client_attributes: %i[number name postcode])
-  end
-
-  def find_client
-    @cl = Client.find_by(number: @order.number)
-    a=4
+    params.require(:order).permit(:count, :quantity, order_product_attributes: %i[product_id quantity], client_attributes: %i[number name postcode])
   end
 end

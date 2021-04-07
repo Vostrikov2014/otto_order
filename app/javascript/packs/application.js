@@ -12,6 +12,12 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-//= require jquery3
-//= require popper
-//= require bootstrap-sprockets
+require("jquery3")
+require("popper")
+require("bootstrap-sprockets")
+
+// cocoon
+// before needed Add the componanion package
+// yarn add @nathanvda/cocoon
+require("jquery")
+require("@nathanvda/cocoon")

@@ -1,8 +1,10 @@
 class Order < ApplicationRecord
-  has_one :client
-  has_and_belongs_to_many  :products
+  belongs_to :client
+  has_many :orders_products
+  has_many :products, through: :orders_products
 
   accepts_nested_attributes_for :client, reject_if: :all_blank
+  accepts_nested_attributes_for :orders_products, reject_if: :all_blank
 
-  validates :number, presence: true, uniqueness: true
+  validates :count, presence: true, uniqueness: true
 end
